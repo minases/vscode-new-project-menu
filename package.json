@@ -1,0 +1,701 @@
+{
+  "name": "new-project-menu",
+  "displayName": "新建项目菜单",
+  "description": "在资源管理器右键菜单中添加「新建项目」子菜单。自动检测系统已安装的语言工具链，只为可用的语言显示菜单项，每种语言下提供多种项目模板（控制台 / 类库 / Web 接口 / 单元测试…），并自动生成构建与调试配置。",
+  "version": "3.0.0",
+  "publisher": "local",
+  "author": "AI generated (see README)",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "新建项目菜单",
+      "properties": {
+        "newProjectMenu.showAllLanguages": {
+          "type": "boolean",
+          "default": false,
+          "description": "忽略自动检测结果，始终显示全部语言的菜单项。默认关闭——只显示系统里工具链确实可用的语言。"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "newProjectMenu.create.c.console",
+        "title": "C：控制台程序",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.c.lib",
+        "title": "C：静态库",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.c.multifile",
+        "title": "C：多文件项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.cpp.console",
+        "title": "C++：控制台程序",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.cpp.class",
+        "title": "C++：类（头文件/实现分离）",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.cpp.lib",
+        "title": "C++：静态库",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.csharp.console",
+        "title": "C#：控制台应用",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.csharp.webapi",
+        "title": "C#：Web API 接口",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.csharp.classlib",
+        "title": "C#：类库",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.csharp.xunit",
+        "title": "C#：单元测试 (xUnit)",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.java.console",
+        "title": "Java：控制台应用 (Maven)",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.java.api",
+        "title": "Java：REST 接口 (Spring Boot)",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.java.lib",
+        "title": "Java：类库 (Maven)",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.java.junit",
+        "title": "Java：单元测试 (JUnit 5)",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.rust.bin",
+        "title": "Rust：二进制程序",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.rust.lib",
+        "title": "Rust：库",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.go.cli",
+        "title": "Go：命令行程序",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.go.http",
+        "title": "Go：HTTP 接口",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.swift.executable",
+        "title": "Swift：可执行程序",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.swift.library",
+        "title": "Swift：库",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.kotlin.console",
+        "title": "创建 Kotlin 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.fortran.console",
+        "title": "创建 Fortran 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.haskell.console",
+        "title": "创建 Haskell 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.dart.console",
+        "title": "创建 Dart 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.python.script",
+        "title": "Python：脚本",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.python.package",
+        "title": "Python：包（可安装模块）",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.python.fastapi",
+        "title": "Python：Web 接口 (FastAPI)",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.python.pytest",
+        "title": "Python：单元测试 (pytest)",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.javascript.script",
+        "title": "JavaScript：脚本",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.javascript.express",
+        "title": "JavaScript：Express 接口",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.javascript.package",
+        "title": "JavaScript：npm 包",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.typescript.console",
+        "title": "TypeScript：控制台程序",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.typescript.express",
+        "title": "TypeScript：Express 接口",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.ruby.script",
+        "title": "创建 Ruby 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.perl.script",
+        "title": "创建 Perl 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.php.script",
+        "title": "创建 PHP 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.lua.script",
+        "title": "创建 Lua 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.r.script",
+        "title": "创建 R 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.create.julia.script",
+        "title": "创建 Julia 项目",
+        "category": "新建项目"
+      },
+      {
+        "command": "newProjectMenu.refresh",
+        "title": "重新检测已安装的语言",
+        "category": "新建项目"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "newProjectMenu.submenu",
+        "label": "新建项目"
+      },
+      {
+        "id": "newProjectMenu.menu.c",
+        "label": "C"
+      },
+      {
+        "id": "newProjectMenu.menu.cpp",
+        "label": "C++"
+      },
+      {
+        "id": "newProjectMenu.menu.csharp",
+        "label": "C#"
+      },
+      {
+        "id": "newProjectMenu.menu.java",
+        "label": "Java"
+      },
+      {
+        "id": "newProjectMenu.menu.rust",
+        "label": "Rust"
+      },
+      {
+        "id": "newProjectMenu.menu.go",
+        "label": "Go"
+      },
+      {
+        "id": "newProjectMenu.menu.swift",
+        "label": "Swift"
+      },
+      {
+        "id": "newProjectMenu.menu.python",
+        "label": "Python"
+      },
+      {
+        "id": "newProjectMenu.menu.javascript",
+        "label": "JavaScript"
+      },
+      {
+        "id": "newProjectMenu.menu.typescript",
+        "label": "TypeScript"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "newProjectMenu.submenu",
+          "when": "newProjectMenu.available",
+          "group": "navigation@1"
+        }
+      ],
+      "view/title": [
+        {
+          "submenu": "newProjectMenu.submenu",
+          "when": "view == workbench.explorer.fileView && newProjectMenu.available",
+          "group": "navigation@1"
+        }
+      ],
+      "file/newFile": [
+        {
+          "submenu": "newProjectMenu.submenu",
+          "when": "newProjectMenu.available",
+          "group": "navigation@1"
+        }
+      ],
+      "newProjectMenu.submenu": [
+        {
+          "submenu": "newProjectMenu.menu.c",
+          "when": "newProjectMenu.lang.c",
+          "group": "1_native@00"
+        },
+        {
+          "submenu": "newProjectMenu.menu.cpp",
+          "when": "newProjectMenu.lang.cpp",
+          "group": "1_native@01"
+        },
+        {
+          "submenu": "newProjectMenu.menu.csharp",
+          "when": "newProjectMenu.lang.csharp",
+          "group": "1_native@02"
+        },
+        {
+          "submenu": "newProjectMenu.menu.java",
+          "when": "newProjectMenu.lang.java",
+          "group": "1_native@03"
+        },
+        {
+          "submenu": "newProjectMenu.menu.rust",
+          "when": "newProjectMenu.lang.rust",
+          "group": "1_native@04"
+        },
+        {
+          "submenu": "newProjectMenu.menu.go",
+          "when": "newProjectMenu.lang.go",
+          "group": "1_native@05"
+        },
+        {
+          "submenu": "newProjectMenu.menu.swift",
+          "when": "newProjectMenu.lang.swift",
+          "group": "1_native@06"
+        },
+        {
+          "command": "newProjectMenu.create.kotlin.console",
+          "when": "newProjectMenu.lang.kotlin",
+          "group": "3_more@07"
+        },
+        {
+          "command": "newProjectMenu.create.fortran.console",
+          "when": "newProjectMenu.lang.fortran",
+          "group": "3_more@08"
+        },
+        {
+          "command": "newProjectMenu.create.haskell.console",
+          "when": "newProjectMenu.lang.haskell",
+          "group": "3_more@09"
+        },
+        {
+          "command": "newProjectMenu.create.dart.console",
+          "when": "newProjectMenu.lang.dart",
+          "group": "3_more@10"
+        },
+        {
+          "submenu": "newProjectMenu.menu.python",
+          "when": "newProjectMenu.lang.python",
+          "group": "2_script@11"
+        },
+        {
+          "submenu": "newProjectMenu.menu.javascript",
+          "when": "newProjectMenu.lang.javascript",
+          "group": "2_script@12"
+        },
+        {
+          "submenu": "newProjectMenu.menu.typescript",
+          "when": "newProjectMenu.lang.typescript",
+          "group": "2_script@13"
+        },
+        {
+          "command": "newProjectMenu.create.ruby.script",
+          "when": "newProjectMenu.lang.ruby",
+          "group": "2_script@14"
+        },
+        {
+          "command": "newProjectMenu.create.perl.script",
+          "when": "newProjectMenu.lang.perl",
+          "group": "2_script@15"
+        },
+        {
+          "command": "newProjectMenu.create.php.script",
+          "when": "newProjectMenu.lang.php",
+          "group": "2_script@16"
+        },
+        {
+          "command": "newProjectMenu.create.lua.script",
+          "when": "newProjectMenu.lang.lua",
+          "group": "2_script@17"
+        },
+        {
+          "command": "newProjectMenu.create.r.script",
+          "when": "newProjectMenu.lang.r",
+          "group": "2_script@18"
+        },
+        {
+          "command": "newProjectMenu.create.julia.script",
+          "when": "newProjectMenu.lang.julia",
+          "group": "2_script@19"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "newProjectMenu.create.c.console",
+          "when": "newProjectMenu.lang.c"
+        },
+        {
+          "command": "newProjectMenu.create.c.lib",
+          "when": "newProjectMenu.lang.c"
+        },
+        {
+          "command": "newProjectMenu.create.c.multifile",
+          "when": "newProjectMenu.lang.c"
+        },
+        {
+          "command": "newProjectMenu.create.cpp.console",
+          "when": "newProjectMenu.lang.cpp"
+        },
+        {
+          "command": "newProjectMenu.create.cpp.class",
+          "when": "newProjectMenu.lang.cpp"
+        },
+        {
+          "command": "newProjectMenu.create.cpp.lib",
+          "when": "newProjectMenu.lang.cpp"
+        },
+        {
+          "command": "newProjectMenu.create.csharp.console",
+          "when": "newProjectMenu.lang.csharp"
+        },
+        {
+          "command": "newProjectMenu.create.csharp.webapi",
+          "when": "newProjectMenu.lang.csharp"
+        },
+        {
+          "command": "newProjectMenu.create.csharp.classlib",
+          "when": "newProjectMenu.lang.csharp"
+        },
+        {
+          "command": "newProjectMenu.create.csharp.xunit",
+          "when": "newProjectMenu.lang.csharp"
+        },
+        {
+          "command": "newProjectMenu.create.java.console",
+          "when": "newProjectMenu.lang.java"
+        },
+        {
+          "command": "newProjectMenu.create.java.api",
+          "when": "newProjectMenu.lang.java"
+        },
+        {
+          "command": "newProjectMenu.create.java.lib",
+          "when": "newProjectMenu.lang.java"
+        },
+        {
+          "command": "newProjectMenu.create.java.junit",
+          "when": "newProjectMenu.lang.java"
+        },
+        {
+          "command": "newProjectMenu.create.rust.bin",
+          "when": "newProjectMenu.lang.rust"
+        },
+        {
+          "command": "newProjectMenu.create.rust.lib",
+          "when": "newProjectMenu.lang.rust"
+        },
+        {
+          "command": "newProjectMenu.create.go.cli",
+          "when": "newProjectMenu.lang.go"
+        },
+        {
+          "command": "newProjectMenu.create.go.http",
+          "when": "newProjectMenu.lang.go"
+        },
+        {
+          "command": "newProjectMenu.create.swift.executable",
+          "when": "newProjectMenu.lang.swift"
+        },
+        {
+          "command": "newProjectMenu.create.swift.library",
+          "when": "newProjectMenu.lang.swift"
+        },
+        {
+          "command": "newProjectMenu.create.kotlin.console",
+          "when": "newProjectMenu.lang.kotlin"
+        },
+        {
+          "command": "newProjectMenu.create.fortran.console",
+          "when": "newProjectMenu.lang.fortran"
+        },
+        {
+          "command": "newProjectMenu.create.haskell.console",
+          "when": "newProjectMenu.lang.haskell"
+        },
+        {
+          "command": "newProjectMenu.create.dart.console",
+          "when": "newProjectMenu.lang.dart"
+        },
+        {
+          "command": "newProjectMenu.create.python.script",
+          "when": "newProjectMenu.lang.python"
+        },
+        {
+          "command": "newProjectMenu.create.python.package",
+          "when": "newProjectMenu.lang.python"
+        },
+        {
+          "command": "newProjectMenu.create.python.fastapi",
+          "when": "newProjectMenu.lang.python"
+        },
+        {
+          "command": "newProjectMenu.create.python.pytest",
+          "when": "newProjectMenu.lang.python"
+        },
+        {
+          "command": "newProjectMenu.create.javascript.script",
+          "when": "newProjectMenu.lang.javascript"
+        },
+        {
+          "command": "newProjectMenu.create.javascript.express",
+          "when": "newProjectMenu.lang.javascript"
+        },
+        {
+          "command": "newProjectMenu.create.javascript.package",
+          "when": "newProjectMenu.lang.javascript"
+        },
+        {
+          "command": "newProjectMenu.create.typescript.console",
+          "when": "newProjectMenu.lang.typescript"
+        },
+        {
+          "command": "newProjectMenu.create.typescript.express",
+          "when": "newProjectMenu.lang.typescript"
+        },
+        {
+          "command": "newProjectMenu.create.ruby.script",
+          "when": "newProjectMenu.lang.ruby"
+        },
+        {
+          "command": "newProjectMenu.create.perl.script",
+          "when": "newProjectMenu.lang.perl"
+        },
+        {
+          "command": "newProjectMenu.create.php.script",
+          "when": "newProjectMenu.lang.php"
+        },
+        {
+          "command": "newProjectMenu.create.lua.script",
+          "when": "newProjectMenu.lang.lua"
+        },
+        {
+          "command": "newProjectMenu.create.r.script",
+          "when": "newProjectMenu.lang.r"
+        },
+        {
+          "command": "newProjectMenu.create.julia.script",
+          "when": "newProjectMenu.lang.julia"
+        },
+        {
+          "command": "newProjectMenu.refresh"
+        }
+      ],
+      "newProjectMenu.menu.c": [
+        {
+          "command": "newProjectMenu.create.c.console",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.c.lib",
+          "group": "1@01"
+        },
+        {
+          "command": "newProjectMenu.create.c.multifile",
+          "group": "1@02"
+        }
+      ],
+      "newProjectMenu.menu.cpp": [
+        {
+          "command": "newProjectMenu.create.cpp.console",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.cpp.class",
+          "group": "1@01"
+        },
+        {
+          "command": "newProjectMenu.create.cpp.lib",
+          "group": "1@02"
+        }
+      ],
+      "newProjectMenu.menu.csharp": [
+        {
+          "command": "newProjectMenu.create.csharp.console",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.csharp.webapi",
+          "group": "1@01"
+        },
+        {
+          "command": "newProjectMenu.create.csharp.classlib",
+          "group": "1@02"
+        },
+        {
+          "command": "newProjectMenu.create.csharp.xunit",
+          "group": "1@03"
+        }
+      ],
+      "newProjectMenu.menu.java": [
+        {
+          "command": "newProjectMenu.create.java.console",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.java.api",
+          "group": "1@01"
+        },
+        {
+          "command": "newProjectMenu.create.java.lib",
+          "group": "1@02"
+        },
+        {
+          "command": "newProjectMenu.create.java.junit",
+          "group": "1@03"
+        }
+      ],
+      "newProjectMenu.menu.rust": [
+        {
+          "command": "newProjectMenu.create.rust.bin",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.rust.lib",
+          "group": "1@01"
+        }
+      ],
+      "newProjectMenu.menu.go": [
+        {
+          "command": "newProjectMenu.create.go.cli",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.go.http",
+          "group": "1@01"
+        }
+      ],
+      "newProjectMenu.menu.swift": [
+        {
+          "command": "newProjectMenu.create.swift.executable",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.swift.library",
+          "group": "1@01"
+        }
+      ],
+      "newProjectMenu.menu.python": [
+        {
+          "command": "newProjectMenu.create.python.script",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.python.package",
+          "group": "1@01"
+        },
+        {
+          "command": "newProjectMenu.create.python.fastapi",
+          "group": "1@02"
+        },
+        {
+          "command": "newProjectMenu.create.python.pytest",
+          "group": "1@03"
+        }
+      ],
+      "newProjectMenu.menu.javascript": [
+        {
+          "command": "newProjectMenu.create.javascript.script",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.javascript.express",
+          "group": "1@01"
+        },
+        {
+          "command": "newProjectMenu.create.javascript.package",
+          "group": "1@02"
+        }
+      ],
+      "newProjectMenu.menu.typescript": [
+        {
+          "command": "newProjectMenu.create.typescript.console",
+          "group": "1@00"
+        },
+        {
+          "command": "newProjectMenu.create.typescript.express",
+          "group": "1@01"
+        }
+      ]
+    }
+  }
+}
