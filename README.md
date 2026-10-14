@@ -121,3 +121,10 @@ node test/check-activation.js             # 验证菜单显隐上下文与命令
 ```bash
 rm -rf ~/.vscode/extensions/local.new-project-menu-1.0.0
 ```
+
+## 许可证
+
+本项目采用 [MIT 许可证](LICENSE)。
+
+> ⚠️ 再次提醒：本项目**由 AI 生成**，未经人工逐行审查。MIT 许可证只解决**法律层面的使用授权**，
+> 不代表代码本身没有缺陷或风险。请自行评估后再使用。
